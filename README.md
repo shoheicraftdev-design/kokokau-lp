@@ -1,7 +1,7 @@
 # kokokau-lp
 
-KokoKau ココカウ（iPhone アプリ・製品リポ `shop-geo-list`）の製品ランディングページ。GitHub Pages で公開する想定。
-- 公開URL: https://shoheicraftdev-design.github.io/kokokau-lp/ （リモート作成・Pages 設定前）
+KokoKau ココカウ（iPhone アプリ・製品リポ `shop-geo-list`）の製品ランディングページ。GitHub Pages で公開。
+- 公開URL: https://shoheicraftdev-design.github.io/kokokau-lp/ （リポ: https://github.com/shoheicraftdev-design/kokokau-lp ・public・Pages は main の / から）
 - サポート: https://shoheicraftdev-design.github.io/kokokau-support/
 - 内容の版: ver-1.0（App Store 公開前）。店に着いたら、その店で買う物が1通の通知にまとまって届く買い物リスト。無料・広告なし・課金なし・アカウント登録なし
 - App Store への導線: 公開前のため「App Store で近日公開」の表示だけで、リンクにしていない（2か所: ヘッダー・最下部）。公開後に `https://apps.apple.com/jp/app/.../id<数字>` の `<a class="kk-badge">` に差し替える
