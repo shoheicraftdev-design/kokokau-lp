@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KokoKau ココカウ — 着いた店で思い出す買い物リスト</title>
+<meta name="description" content="買う物を、買える店やカテゴリと一緒に登録しておくと、その店に着いたとき、そこで買う物が1通の通知にまとまって届くiPhoneの買い物リスト。無料・広告なし・アカウント登録なし。">
+<meta property="og:title" content="KokoKau ココカウ — 着いた店で思い出す買い物リスト">
+<meta property="og:description" content="その店に着いたら、そこで買う物が1通の通知にまとまって届く買い物リスト。">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/appicon.png">
+<link rel="apple-touch-icon" href="images/appicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#B83A2C}a:hover{color:#8E2A1F}
+.kk-root{font-family:"Noto Sans JP",system-ui,sans-serif;color:#3A434C;background:#FFFFFF;line-height:1.8;font-size:16px}
+.kk-root *{box-sizing:border-box}
+.kk-wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.kk-round{font-family:"Zen Maru Gothic",system-ui,sans-serif;font-weight:700;color:#2F3A44}
+.kk-h1{margin:0;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.2}
+.kk-h2{margin:0;font-size:clamp(1.6rem,3.4vw,2.25rem);line-height:1.45}
+.kk-hero{position:relative;overflow:hidden;background:#EAF4FB}
+.kk-map{position:absolute;inset:0;pointer-events:none}
+.kk-map span{position:absolute;display:block}
+.kk-hero-body{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding:56px 0 96px}
+.kk-hero-copy{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.kk-hero-visual{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.kk-badge{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;background:#2F3A44;color:#FFFFFF;font-weight:700;text-decoration:none}
+.kk-badge:hover{color:#FFFFFF;background:#1F272E}
+.kk-notice{width:100%;max-width:360px;display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border-radius:22px;background:#FFFFFF;box-shadow:0 16px 40px rgba(47,58,68,.16);line-height:1.5}
+.kk-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;padding:96px 0}
+.kk-point{display:flex;flex-direction:column;gap:12px}
+.kk-point h2{margin:0;font-size:1.375rem}
+.kk-point p{margin:0}
+.kk-shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.kk-shots figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.kk-shots img{width:100%;height:auto;border-radius:24px;display:block}
+.kk-shots figcaption{font-size:15px}
+.kk-privacy{max-width:880px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:20px}
+.kk-privacy ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px}
+.kk-end{background:#2F3A44;color:#E9EEF2}
+.kk-end a{color:#E9EEF2}
+.kk-end-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:64px 0}
+.kk-end .kk-badge{background:#E8574B}
+.kk-end .kk-badge:hover{background:#D9473A}
+.kk-foot{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;padding:0 0 40px;font-size:14px}
+@media (max-width:900px){
+.kk-points{grid-template-columns:minmax(0,1fr);gap:40px;padding:72px 0}
+.kk-shots{grid-template-columns:minmax(0,1fr);max-width:360px;margin:0 auto}
+}
+@media (max-width:640px){
+.kk-wrap{padding:0 16px}
+.kk-hero-body{padding:32px 0 72px;gap:40px}
+.kk-privacy{padding:72px 16px}
+}
+</style>
+</head>
+<body>
+<div class="kk-root">
+
+<!-- hero -->
+<section id="top" class="kk-hero">
+<div class="kk-map" aria-hidden="true">
+<span style="left:-8%;top:62%;width:60%;height:120px;border-radius:60px;background:#CFE8F7;transform:rotate(-8deg)"></span>
+<span style="right:-6%;top:18%;width:46%;height:150px;border-radius:75px;background:#DDEFD0;transform:rotate(12deg)"></span>
+<span style="left:30%;top:-10%;width:14px;height:130%;background:#FFFFFF;transform:rotate(18deg)"></span>
+<span style="left:0;top:40%;width:130%;height:12px;background:#FFFFFF;transform:rotate(-4deg)"></span>
+</div>
+<div class="kk-wrap" style="position: relative">
+<header style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding-top: 24px">
+<a href="#top" class="kk-round" style="display: flex; align-items: center; gap: 10px; font-size: 20px; text-decoration: none">
+<img src="images/appicon.png" alt="" width="44" height="44" style="border-radius: 12px; background: #FFFFFF">
+KokoKau
+</a>
+<span class="kk-badge" style="min-height: 44px; padding: 0 18px; font-size: 14px">App Store で近日公開</span>
+</header>
+<div class="kk-hero-body">
+<div class="kk-hero-copy">
+<h1 class="kk-round kk-h1">ココで、<span style="color: #D9473A">カウ</span>。</h1>
+<p class="kk-round" style="margin: 0; font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 500">着いた店で思い出す買い物リスト</p>
+<p style="margin: 0; max-width: 28em">買う物を、買える店やカテゴリと一緒に登録。その店に着いたら、そこで買う物が1通の通知にまとまって届きます。</p>
+<p style="margin: 0; font-size: 14px; color: #55606A">iPhone 専用・無料・広告なし・アカウント登録なし</p>
+</div>
+<div class="kk-hero-visual">
+<div class="kk-notice">
+<img src="images/appicon.png" alt="" width="38" height="38" style="border-radius: 10px; flex: none">
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700; color: #2F3A44">ホームセンター 川沿い店</span>
+<span style="font-size: 15px">単3電池、ガムテープ、電球</span>
+</div>
+</div>
+<svg width="72" height="88" viewBox="0 0 72 88" role="img" aria-label="店の位置を示すピン">
+<path d="M36 84s28-25 28-46A28 28 0 0 0 8 38c0 21 28 46 28 46z" fill="#E8574B"></path>
+<circle cx="36" cy="37" r="11" fill="#FFFFFF"></circle>
+</svg>
+<span style="padding: 4px 14px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 500; color: #2F3A44">店に着いた</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 3 points -->
+<section class="kk-wrap">
+<div class="kk-points">
+<div class="kk-point">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A8C63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M4 9v11h16V9"></path><path d="M3 9h18"></path><path d="M10 20v-6h4v6"></path></svg>
+<h2 class="kk-round">店は地図から</h2>
+<p>店名で検索して登録。出てこない店は、地図にピンを立てて名前を付けます。店には「スーパー」などのカテゴリを1つ付けます。</p>
+</div>
+<div class="kk-point">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A8C63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>
+<h2 class="kk-round">買える場所は、店でもカテゴリでも</h2>
+<p>「牛乳はスーパーならどこでも」「電池はホームセンターか、いつもの店」。混ぜて選べます。</p>
+</div>
+<div class="kk-point">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D9473A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+<h2 class="kk-round">着いたら1通だけ</h2>
+<p>その店で買える物をまとめて1通。店の前を車で通り過ぎるだけのときは、なるべく鳴らしません。</p>
+</div>
+</div>
+</section>
+
+<!-- screens -->
+<section style="background: #F5F7F9">
+<div class="kk-wrap" style="padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; gap: 40px">
+<h2 class="kk-round kk-h2">開いたときは、いまいる場所から順に。</h2>
+<div class="kk-shots">
+<figure>
+<img src="images/shot-01-current-shop.jpg" alt="いまいる店で買う物が一番上に出る買い物リスト" width="662" height="1440" loading="lazy">
+<figcaption>いまいる店の分が、いちばん上。</figcaption>
+</figure>
+<figure>
+<img src="images/shot-02-candidates.jpg" alt="ほかの店で買う物が近い順に並ぶ画面" width="662" height="1440" loading="lazy">
+<figcaption>ほかの店の分は、近い順。カテゴリで絞り込めます。</figcaption>
+</figure>
+<figure>
+<img src="images/shot-05-item-edit.jpg" alt="1つの品目に複数の買える場所を選ぶ編集画面" width="662" height="1440" loading="lazy">
+<figcaption>1つの品目に、いくつもの場所。買ったら全部の店から消えます。</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- privacy -->
+<section class="kk-privacy">
+<h2 class="kk-round" style="margin: 0; font-size: clamp(1.5rem, 3vw, 2rem)">位置情報と、プライバシーのこと</h2>
+<ul>
+<li>登録した店・品目と位置情報は iPhone の中だけで使い、外部へ送りません。</li>
+<li>アカウント登録はありません。広告もありません。</li>
+<li>アプリを閉じていても店に着いたことを判定するため、位置情報は「常に許可」をお願いしています。許可しなくても、アプリを開けば店ごとのリストは使えます。</li>
+<li>到着の判定は、電波や GPS の状況によって遅れたり、届かなかったりすることがあります。届かなかったときも、アプリを開けばその店で買う物が見られます。</li>
+</ul>
+</section>
+
+<!-- end -->
+<section class="kk-end">
+<div class="kk-wrap">
+<div class="kk-end-row">
+<div style="display: flex; align-items: center; gap: 16px">
+<img src="images/appicon.png" alt="" width="72" height="72" style="border-radius: 18px; background: #FFFFFF">
+<div style="display: flex; flex-direction: column">
+<span class="kk-round" style="font-size: 22px; color: #FFFFFF">KokoKau ココカウ</span>
+<span style="font-size: 14px">iPhone 専用・無料</span>
+</div>
+</div>
+<span class="kk-badge">App Store で近日公開</span>
+</div>
+<footer class="kk-foot">
+<span>© Craft WhiteSpace</span>
+<nav aria-label="フッター" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="https://shoheicraftdev-design.github.io/kokokau-support/">サポート</a>
+<a href="https://shoheicraftdev-design.github.io/kokokau-support/privacy.html">プライバシーポリシー</a>
+<a href="https://shoheicraftdev-design.github.io/kokokau-support/terms.html">利用規約</a>
+</nav>
+</footer>
+</div>
+</section>
+
+</div>
+</body>
+</html>
